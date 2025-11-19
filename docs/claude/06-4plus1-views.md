@@ -299,17 +299,26 @@ graph TB
     WS --> ChatCtrl
     API --> AuthCtrl
     API --> AdminCtrl
+    API --> ImageCtrl
+    API --> VideoCtrl
 
+    AuthCtrl --> AuthSvc
+    AdminCtrl --> AuthSvc
+    AdminCtrl --> QuotaSvc
     ChatCtrl --> AuthSvc
     ChatCtrl --> QuotaSvc
     ChatCtrl --> ChannelSvc
+    ImageCtrl --> AuthSvc
     ImageCtrl --> ChannelSvc
+    VideoCtrl --> AuthSvc
     VideoCtrl --> ChannelSvc
 
     ChannelSvc --> AdapterSvc
     ChannelSvc --> CacheSvc
     AuthSvc --> UserRepo
+    AuthSvc --> QuotaRepo
     QuotaSvc --> QuotaRepo
+    AdminCtrl --> UserRepo
 
     UserRepo --> MySQL
     ConvRepo --> MySQL
